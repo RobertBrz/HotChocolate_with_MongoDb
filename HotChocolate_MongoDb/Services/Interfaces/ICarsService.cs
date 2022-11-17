@@ -5,8 +5,8 @@ namespace HotChocolate_MongoDb.Services.Interfaces
 {
     public interface ICarsService
     {
-        List<ICar> GetAllCars();
-        ICar GetCarByOwner(Owner owner);
-
+        List<Car> GetAllCars();
+        List<Car> GetCarByOwner(string ownerName);
+        Car AddCar(Car car);
     }
 }

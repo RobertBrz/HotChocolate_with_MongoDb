@@ -22,7 +22,9 @@ internal class Program
             .AddTypeExtension<CarsResolver>()
             .AddTypeExtension<OwnerResolver>()
             .AddMutationType<Mutation>()
-            .AddDefaultTransactionScopeHandler();
+            .AddTypeExtension<OwnerMutation>()
+            .AddTypeExtension<CarMutation>();
+            //.AddDefaultTransactionScopeHandler();
 
         builder.Services.Configure<MongoDbSettings>(builder.Configuration.GetSection("MongoDB"));
 

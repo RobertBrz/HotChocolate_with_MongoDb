@@ -1,24 +1,42 @@
-﻿using HotChocolate_MongoDb.Models;
+﻿using HCMDB.Infrastructure;
+using HotChocolate_MongoDb.Models;
 using HotChocolate_MongoDb.Models.Interfaces;
 using HotChocolate_MongoDb.Services.Interfaces;
+using Microsoft.Extensions.Options;
+using MongoDB.Driver;
+using System.Reflection.Metadata.Ecma335;
 
 namespace HotChocolate_MongoDb.Services
 {
     public class CarsService : ICarsService
     {
-        public CarsService()
+        IMongoCollection<Car> _carsCollection;
+        public CarsService(IOptions<MongoDbSettings> _bookStoreDatabaseSettings)
         {
+            var mongoClient = new MongoClient(
+            _bookStoreDatabaseSettings.Value.ConnectionString);
 
+            var mongoDatabase = mongoClient.GetDatabase(
+                _bookStoreDatabaseSettings.Value.DatabaseName);
+
+            _carsCollection = mongoDatabase.GetCollection<Car>(
+                _bookStoreDatabaseSettings.Value.CollectionNames.Where(x => x == "CarsCollection").Single());
         }
 
-        List<ICar> ICarsService.GetAllCars()
+        public Car AddCar(Car car)
         {
-            return new List<ICar>() { new Car() { Model = "model1", Owner = new Owner() { Name = "name1 " }, Plate = "plate 1" } };
+            _carsCollection.InsertOne(car);
+            return car;
         }
 
-        ICar ICarsService.GetCarByOwner(Owner owner)
+        List<Car> ICarsService.GetAllCars()
         {
-            return new Car() { Model = "2" };
+            return  _carsCollection.Find(f => true).ToList();
+        }
+
+        List<Car> ICarsService.GetCarByOwner(string  ownerName)
+        {
+            return _carsCollection.Find(c => c.Owner.Name == ownerName).ToList();
         }
     }
 }

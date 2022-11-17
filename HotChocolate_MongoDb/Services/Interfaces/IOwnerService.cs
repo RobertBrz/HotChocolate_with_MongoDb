@@ -5,7 +5,6 @@ namespace HotChocolate_MongoDb.Services.Interfaces
 {
     public interface IOwnerService
     {
-        public List<IOwner> GetAllOwners();
-
+        public List<Owner> GetAllOwners();
     }
 }

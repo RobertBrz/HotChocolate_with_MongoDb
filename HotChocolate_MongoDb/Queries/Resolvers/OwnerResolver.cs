@@ -14,7 +14,7 @@ namespace HotChocolate_MongoDb.Queries.Resolvers
             _ownersService = ownersService;
         }
 
-        public List<IOwner> GetAllOwners() => _ownersService.GetAllOwners();
+        public List<Owner> GetAllOwners() => _ownersService.GetAllOwners();
 
     }
 }

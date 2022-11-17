@@ -1,4 +1,5 @@
-﻿using HotChocolate_MongoDb.Models.Interfaces;
+﻿using HotChocolate_MongoDb.Models;
+using HotChocolate_MongoDb.Models.Interfaces;
 using HotChocolate_MongoDb.Services.Interfaces;
 
 namespace HotChocolate_MongoDb.Queries.Resolvers
@@ -12,9 +13,14 @@ namespace HotChocolate_MongoDb.Queries.Resolvers
             _carsService = carsService;
         }
 
-        public List<ICar> GetAllCars()
+        public List<Car> GetAllCars()
         {
             return _carsService.GetAllCars();
+        }
+
+        public List<Car> GetCarByOwner(string ownerName)
+        {
+            return _carsService.GetCarByOwner(ownerName);
         }
     }
 }
