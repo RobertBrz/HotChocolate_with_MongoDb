@@ -1,7 +1,10 @@
+using HCMDB.Infrastructure;
 using HotChocolate_MongoDb.Models;
+using HotChocolate_MongoDb.Mutation;
 using HotChocolate_MongoDb.Queries;
 using HotChocolate_MongoDb.Queries.Resolvers;
 using HotChocolate_MongoDb.Services;
+using HotChocolate_MongoDb.Services.Interfaces;
 
 internal class Program
 {
@@ -16,7 +19,12 @@ internal class Program
         builder.Services.AddGraphQLServer()
             .AddQueryType<Query>()
             .AddTypeExtension<CarExtension>()
-            .AddTypeExtension<CarsResolver>();
+            .AddTypeExtension<CarsResolver>()
+            .AddTypeExtension<OwnerResolver>()
+            .AddMutationType<Mutation>()
+            .AddDefaultTransactionScopeHandler();
+
+        builder.Services.Configure<MongoDbSettings>(builder.Configuration.GetSection("MongoDB"));
 
 
         var app = builder.Build();
@@ -36,6 +44,8 @@ internal class Program
 
         app.UseAuthorization();
         app.MapGraphQL();
+        //app.UseEndpoints(endpoints => endpoints.MapGraphQL());
+
         app.MapControllerRoute(
             name: "default",
             pattern: "{controller=Home}/{action=Index}/{id?}");

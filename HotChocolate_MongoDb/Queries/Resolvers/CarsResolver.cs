@@ -1,5 +1,5 @@
-﻿using HotChocolate_MongoDb.Models;
-using HotChocolate_MongoDb.Services;
+﻿using HotChocolate_MongoDb.Models.Interfaces;
+using HotChocolate_MongoDb.Services.Interfaces;
 
 namespace HotChocolate_MongoDb.Queries.Resolvers
 {
@@ -12,9 +12,9 @@ namespace HotChocolate_MongoDb.Queries.Resolvers
             _carsService = carsService;
         }
 
-        public List<ICar> GrtCarsByResolver()
+        public List<ICar> GetAllCars()
         {
-            return _carsService.GetByResolver();
+            return _carsService.GetAllCars();
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using HotChocolate_MongoDb.Models;
+using HotChocolate_MongoDb.Models.Interfaces;
+using HotChocolate_MongoDb.Services.Interfaces;
 
 namespace HotChocolate_MongoDb.Services
 {
@@ -9,20 +11,14 @@ namespace HotChocolate_MongoDb.Services
 
         }
 
-        public List<Car> GetAll()
+        List<ICar> ICarsService.GetAllCars()
         {
-            return new List<Car>() { new Car() { Model = "model1", Owner = new Owner() { Name = "name1 " }, Plate = "plate 1" } };
+            return new List<ICar>() { new Car() { Model = "model1", Owner = new Owner() { Name = "name1 " }, Plate = "plate 1" } };
         }
 
-        public Car GetByOwner(Owner owner)
+        ICar ICarsService.GetCarByOwner(Owner owner)
         {
             return new Car() { Model = "2" };
-        }
-
-        public List<ICar> GetByResolver()
-        {
-            return new List<ICar>() { new Car() { Model = "resolver1", Owner = new Owner() { Name = "name1 " }, Plate = "plate res 1" } };
-
         }
     }
 }

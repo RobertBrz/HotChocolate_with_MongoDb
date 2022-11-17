@@ -1,4 +1,6 @@
-﻿namespace HotChocolate_MongoDb.Models
+﻿using HotChocolate_MongoDb.Models.Interfaces;
+
+namespace HotChocolate_MongoDb.Models
 {
     public class Car :ICar
     {

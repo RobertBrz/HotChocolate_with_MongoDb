@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotChocolate_MongoDb", "HotChocolate_MongoDb\HotChocolate_MongoDb.csproj", "{D1A390BB-B8F5-47C8-8927-47254BD55165}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotChocolate_MongoDb", "HotChocolate_MongoDb\HotChocolate_MongoDb.csproj", "{D1A390BB-B8F5-47C8-8927-47254BD55165}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HCMDB.Infrastructure", "HCMDB.Infrastructure\HCMDB.Infrastructure.csproj", "{2640666F-8E77-4BDA-81C6-084BED3CFCA5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{D1A390BB-B8F5-47C8-8927-47254BD55165}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1A390BB-B8F5-47C8-8927-47254BD55165}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1A390BB-B8F5-47C8-8927-47254BD55165}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2640666F-8E77-4BDA-81C6-084BED3CFCA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2640666F-8E77-4BDA-81C6-084BED3CFCA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2640666F-8E77-4BDA-81C6-084BED3CFCA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2640666F-8E77-4BDA-81C6-084BED3CFCA5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
