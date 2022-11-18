@@ -6,14 +6,17 @@ namespace HotChocolate_MongoDb.Models
 {
     [DataContract]
     [BsonIgnoreExtraElements]
-    public class Car :ICar
+    public class Car : ICar
     {
+        [BsonId]
+        [DataMember]
+        public int  ID{ get; set; }
         [DataMember]
         public string Model { get; set; }
         [DataMember]
         public string Plate { get; set; }
         [DataMember]
-        public Owner Owner { get; set; }
+        public virtual Owner Owner { get; set; }
     }
 
     [ExtendObjectType(typeof(Car))]

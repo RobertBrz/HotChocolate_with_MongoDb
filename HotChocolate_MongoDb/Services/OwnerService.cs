@@ -22,6 +22,12 @@ namespace HotChocolate_MongoDb.Services
                 _bookStoreDatabaseSettings.Value.CollectionNames.Where(x => x == "OwnerCollection").Single());
         }
 
+        public Owner AddOwner(Owner owner)
+        {
+            _ownersCollection.InsertOne(owner);
+            return owner;
+        }
+
         public List<Owner> GetAllOwners()
         {
             return _ownersCollection.Find(f => true).ToList();
